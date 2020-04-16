@@ -1,0 +1,9 @@
+.component {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  height: 100%;
+  list-style: none;
+}
