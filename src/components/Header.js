@@ -16,6 +16,11 @@ function Header() {
             <h2 className={styles.title}>Shop</h2>
           </NavLink>
         </li>
+        <li className={styles.item}>
+          <NavLink className={styles.link} exact to='/signin'>
+            <h2 className={styles.title}>Sign In</h2>
+          </NavLink>
+        </li>
       </ul>
     </header>
   )

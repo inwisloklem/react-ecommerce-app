@@ -9,6 +9,7 @@
   transition: 400ms ease;
   transition-property: background;
   cursor: pointer;
+  outline: none;
 
   &:nth-of-type(1) {
     grid-area: 1 / 1 / 2 / 2;

@@ -1,0 +1,52 @@
+.button {
+  max-width: 256px;
+  width: 100%;
+  height: 40px;
+  background: #1e88e5;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 400ms ease;
+  transition-property: background;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background: #2196f3;
+  }
+}
+
+.input {
+  max-width: 50%;
+  padding: 0 16px;
+  width: 100%;
+  height: 40px;
+  background: #bbdefb;
+  border: none;
+  border-bottom: solid 2px #1e88e5;
+  font-size: 20px;
+  color: #2196f3;
+  outline: none;
+}
+
+.label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 20px;
+  color: #1e88e5;
+}
+
+.text {
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.title {
+  margin-bottom: 16px;
+  font-size: 32px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #1e88e5;
+}
