@@ -2,13 +2,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  padding: 0 16px;
   height: 40px;
   background: #1e88e5;
 }
 
+.item {
+  &:not(:last-of-type) {
+    margin-right: 8px;
+  }
+}
+
+.list {
+  display: flex;
+  list-style: none;
+}
+
+.link {
+  line-height: 1;
+  text-decoration: none;
+  outline: none;
+
+  &:global(.active) {
+    .title {
+      border-bottom-color: #fff;
+    }
+  }
+}
+
 .title {
+  margin-top: 2px;
   font-size: 20px;
   color: #fff;
   text-transform: uppercase;
+  border-bottom: solid 2px transparent;
 }

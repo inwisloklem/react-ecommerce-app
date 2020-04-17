@@ -1,7 +1,7 @@
 .component {
   background: #1e88e5;
   transition: 400ms ease;
-  transition-property: background, transform;
+  transition-property: background;
   cursor: pointer;
 
   &:nth-of-type(1) {

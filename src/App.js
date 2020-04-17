@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom'
 import Header from 'components/Header'
 import Home from 'pages/Home'
 import NotFound from 'pages/NotFound'
-import Products from 'pages/Products'
+import Shop from 'pages/Shop'
 import styles from 'App.module.scss'
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Switch>
         <Route component={Home} exact path='/' />
-        <Route component={Products} exact path='/products' />
+        <Route component={Shop} exact path='/shop' />
         <Route component={NotFound} path='*' />
       </Switch>
     </div>

@@ -1,0 +1,15 @@
+.component {
+  list-style: none;
+
+  &:not(:last-of-type) {
+    margin-bottom: 24px;
+  }
+}
+
+.title {
+  margin-bottom: 16px;
+  font-size: 32px;
+  color: #1e88e5;
+  line-height: 1;
+  text-transform: uppercase;
+}

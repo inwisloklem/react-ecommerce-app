@@ -1,15 +1,7 @@
 import React from 'react'
+import BANNERS from 'db/banners'
 import BannersItem from 'components/BannersItem'
 import styles from 'components/Banners.module.scss'
-import uuid from 'utils/uuid'
-
-const BANNERS = [
-  {id: uuid(), title: 'Hats', url: '/hats'},
-  {id: uuid(), title: 'Jackets', url: '/jackets'},
-  {id: uuid(), title: 'Sneakers', url: '/sneakers'},
-  {id: uuid(), title: 'Women', url: '/women'},
-  {id: uuid(), title: 'Men', url: '/men'},
-]
 
 function Banners() {
   return (
