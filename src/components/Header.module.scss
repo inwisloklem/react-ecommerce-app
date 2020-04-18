@@ -25,8 +25,11 @@
   line-height: 1;
   text-decoration: none;
   outline: none;
+  cursor: pointer;
 
   &:global(.active) {
+    cursor: default;
+
     .title {
       border-bottom-color: #fff;
     }

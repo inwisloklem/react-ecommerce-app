@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {signInWithGoogle} from 'db/firebase'
+import Button from 'components/Button'
 import styles from 'components/SignIn.module.scss'
 
 class SignIn extends Component {
@@ -43,10 +45,14 @@ class SignIn extends Component {
             />
           </label>
 
-          <div>
-            <button className={styles.button} type='submit' onClick={handleSubmit}>
-              Submit
-            </button>
+          <div className={styles.hgap}>
+            <Button type='submit' onClick={handleSubmit}>
+              Sign in
+            </Button>
+
+            <Button hasAccent onClick={signInWithGoogle}>
+              Sign in with Google
+            </Button>
           </div>
         </form>
       </div>

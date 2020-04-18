@@ -1,22 +1,8 @@
 @import "styles/variables.scss";
 
-.button {
-  max-width: 256px;
-  width: 100%;
-  height: 40px;
-  background: $color-primary;
-  border: none;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: 400ms ease;
-  transition-property: background;
-  cursor: pointer;
-  outline: none;
-
-  &:hover {
-    background: $color-primary-light;
+.hgap {
+  *:not(:last-of-type) {
+    margin-right: 16px;
   }
 }
 
