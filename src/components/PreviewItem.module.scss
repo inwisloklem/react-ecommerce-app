@@ -1,3 +1,5 @@
+@import "styles/variables.scss";
+
 .component {
   position: relative;
   display: flex;
@@ -5,7 +7,7 @@
   align-items: center;
   padding: 16px;
   height: 144px;
-  background: #1e88e5;
+  background: $color-primary;
   transition: 400ms ease;
   transition-property: background;
   cursor: pointer;
@@ -25,7 +27,7 @@
   }
 
   &:hover {
-    background: #2196f3;
+    background: $color-primary-light;
 
     .title {
       transform: scale(1.5);

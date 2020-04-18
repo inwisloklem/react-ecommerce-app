@@ -1,3 +1,5 @@
+@import "styles/variables.scss";
+
 .component {
   display: flex;
   justify-content: center;
@@ -5,7 +7,7 @@
   margin-bottom: 16px;
   padding: 0 16px;
   height: 40px;
-  background: #1e88e5;
+  background: $color-primary;
 }
 
 .item {

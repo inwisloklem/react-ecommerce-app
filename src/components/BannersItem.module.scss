@@ -1,5 +1,7 @@
+@import "styles/variables.scss";
+
 .component {
-  background: #1e88e5;
+  background: $color-primary;
   transition: 400ms ease;
   transition-property: background;
   cursor: pointer;
@@ -24,7 +26,7 @@
     outline: none;
   }
   &:hover {
-    background: #2196f3;
+    background: $color-primary-light;
 
     .title {
       transform: scale(1.5);

@@ -1,6 +1,8 @@
+@import "styles/variables.scss";
+
 .app {
   padding: 16px;
   height: calc(100vh - 60px);
-  color: #282c34;
+  color: $color-primary-text;
   line-height: 1.5;
 }

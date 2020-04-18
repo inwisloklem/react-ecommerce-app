@@ -1,3 +1,5 @@
+@import "styles/variables.scss";
+
 .component {
   display: flex;
   justify-content: center;
@@ -8,7 +10,7 @@
 .title {
   margin-bottom: 64px;
   font-size: 128px;
-  color: #1e88e5;
+  color: $color-primary;
   line-height: 1;
   text-align: center;
   text-transform: uppercase;

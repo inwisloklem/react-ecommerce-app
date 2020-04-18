@@ -1,3 +1,5 @@
+@import "styles/variables.scss";
+
 .component {
   list-style: none;
 
@@ -10,7 +12,7 @@
   margin-bottom: 16px;
   margin-left: 16px;
   font-size: 32px;
-  color: #1e88e5;
+  color: $color-primary;
   line-height: 1;
   text-transform: uppercase;
 }

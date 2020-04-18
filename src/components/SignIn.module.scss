@@ -1,8 +1,10 @@
+@import "styles/variables.scss";
+
 .button {
   max-width: 256px;
   width: 100%;
   height: 40px;
-  background: #1e88e5;
+  background: $color-primary;
   border: none;
   color: #fff;
   font-size: 20px;
@@ -14,7 +16,7 @@
   outline: none;
 
   &:hover {
-    background: #2196f3;
+    background: $color-primary-light;
   }
 }
 
@@ -23,11 +25,11 @@
   padding: 0 16px;
   width: 100%;
   height: 40px;
-  background: #bbdefb;
+  background: $color-primary-lighter;
   border: none;
-  border-bottom: solid 2px #1e88e5;
+  border-bottom: solid 2px $color-primary;
   font-size: 20px;
-  color: #2196f3;
+  color: $color-primary-light;
   outline: none;
 }
 
@@ -35,7 +37,7 @@
   display: block;
   margin-bottom: 16px;
   font-size: 20px;
-  color: #1e88e5;
+  color: $color-primary;
 }
 
 .text {
@@ -48,5 +50,5 @@
   font-size: 32px;
   line-height: 1;
   text-transform: uppercase;
-  color: #1e88e5;
+  color: $color-primary;
 }
