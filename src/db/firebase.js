@@ -20,7 +20,7 @@ export const store = firebase.firestore()
 const provider = new firebase.auth.GoogleAuthProvider()
 provider.setCustomParameters({prompt: 'select_account'})
 
-export async function createUserProfileDocument(user) {
+export async function createUserProfileDocument(user, data) {
   if (!user) {
     return
   }
@@ -34,7 +34,7 @@ export async function createUserProfileDocument(user) {
     try {
       await userRef.set({
         createdAt: new Date(),
-        displayName,
+        displayName: displayName ?? data.displayName,
         email,
       })
     }

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {auth, createUserProfileDocument} from 'db/firebase'
 import Input from 'components/Input'
 import Button from 'components/Button'
 import styles from 'components/SignIn.module.scss'
@@ -11,9 +12,22 @@ class SignUp extends Component {
     this.setState({[name]: value})
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault()
-    this.setState({confirmPassword: '', displayName: '', email: '', password: ''})
+    const {confirmPassword, password} = this.state
+
+    if (confirmPassword === password) {
+      try {
+        const {displayName, email, password} = this.state
+        const {user} = await auth.createUserWithEmailAndPassword(email, password)
+
+        await createUserProfileDocument(user, {displayName})
+        this.setState({confirmPassword: '', displayName: '', email: '', password: ''})
+      }
+      catch (error) {
+        console.error(error)
+      }
+    }
   }
 
   render() {
