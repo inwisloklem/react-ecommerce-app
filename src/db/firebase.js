@@ -37,7 +37,8 @@ export async function createUserProfileDocument(user) {
         displayName,
         email,
       })
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error.message)
     }
   }
