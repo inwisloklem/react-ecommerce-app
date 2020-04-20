@@ -1,5 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import {connect} from 'react-redux'
 import {auth} from 'db/firebase'
 import styles from 'components/Header.module.scss'
 
@@ -37,4 +38,10 @@ function Header({currentUser}) {
   )
 }
 
-export default Header
+function mapStateToProps(state) {
+  return {
+    currentUser: state.user.currentUser,
+  }
+}
+
+export default connect(mapStateToProps)(Header)
