@@ -1,6 +1,7 @@
 @import "styles/variables.scss";
 
 .component {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,13 +12,21 @@
 }
 
 .item {
+  display: flex;
+  align-items: center;
+
   &:not(:last-of-type) {
     margin-right: 16px;
   }
 }
 
+.last {
+  margin-left: auto;
+}
+
 .list {
   display: flex;
+  width: 100%;
   list-style: none;
 }
 

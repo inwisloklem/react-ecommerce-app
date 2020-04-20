@@ -1,0 +1,13 @@
+@import "styles/variables.scss";
+
+.component {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  z-index: 5;
+  padding: 16px;
+  max-width: 288px;
+  width: 100%;
+  background: $color-primary-lighter;
+  outline: none;
+}

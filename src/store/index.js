@@ -1,7 +1,8 @@
-import {applyMiddleware, createStore} from 'redux'
+import {applyMiddleware, createStore, compose} from 'redux'
 import reduxLogger from 'redux-logger'
 import rootReducer from 'store/rootReducer'
 
-const store = createStore(rootReducer, applyMiddleware(reduxLogger))
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(reduxLogger)))
 
 export default store

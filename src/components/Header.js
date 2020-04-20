@@ -2,6 +2,8 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {auth} from 'db/firebase'
+import CartCount from 'components/CartCount'
+import CartDropdown from 'components/CartDropdown'
 import styles from 'components/Header.module.scss'
 
 function Header({currentUser}) {
@@ -33,7 +35,12 @@ function Header({currentUser}) {
             </NavLink>
           )}
         </li>
+        <li className={styles.last}>
+          <CartCount />
+        </li>
       </ul>
+
+      <CartDropdown />
     </header>
   )
 }

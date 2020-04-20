@@ -3,7 +3,6 @@ import {Redirect, Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {auth, createUserProfileDocument} from 'db/firebase'
 import {setCurrentUser} from 'store/actions'
-import store from 'store'
 import Auth from 'pages/Auth'
 import Header from 'components/Header'
 import Home from 'pages/Home'
@@ -65,10 +64,10 @@ function mapStateToProps({user}) {
   }
 }
 
-function mapDispatchToProps() {
+function mapDispatchToProps(dispatch) {
   return {
     setCurrentUser(user) {
-      return store.dispatch(setCurrentUser(user))
+      return dispatch(setCurrentUser(user))
     },
   }
 }
