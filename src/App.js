@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Route, Switch} from 'react-router-dom'
+import {Redirect, Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {auth, createUserProfileDocument} from 'db/firebase'
 import {setCurrentUser} from 'store/actions'
@@ -12,17 +12,16 @@ import Shop from 'pages/Shop'
 import styles from 'App.module.scss'
 
 class App extends Component {
-  state = {currentUser: null}
   unsubscribeFromAuthStateChanged = null
 
   componentDidMount() {
     const {setCurrentUser} = this.props
 
-    this.unsubscribeFromAuthStateChanged = auth.onAuthStateChanged(async user => {
+    this.unsubscribeFromAuthStateChanged = auth.onAuthStateChanged(async (user) => {
       if (user) {
         const userRef = await createUserProfileDocument(user)
 
-        userRef.onSnapshot(snapshot => {
+        userRef.onSnapshot((snapshot) => {
           setCurrentUser({
             id: snapshot.id,
             ...snapshot.data(),
@@ -40,17 +39,29 @@ class App extends Component {
   }
 
   render() {
+    const {currentUser} = this.props
+
     return (
       <div className={styles.app}>
         <Header />
         <Switch>
           <Route component={Home} exact path='/' />
-          <Route component={Auth} exact path='/signin' />
+          <Route
+            exact
+            path='/signin'
+            render={() => (currentUser ? <Redirect to='/' /> : <Auth />)}
+          />
           <Route component={Shop} exact path='/shop' />
           <Route component={NotFound} path='*' />
         </Switch>
       </div>
     )
+  }
+}
+
+function mapStateToProps({user}) {
+  return {
+    currentUser: user.currentUser,
   }
 }
 
@@ -62,4 +73,4 @@ function mapDispatchToProps() {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

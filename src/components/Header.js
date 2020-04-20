@@ -38,9 +38,9 @@ function Header({currentUser}) {
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({user}) {
   return {
-    currentUser: state.user.currentUser,
+    currentUser: user.currentUser,
   }
 }
 
