@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {auth, createUserProfileDocument} from 'db/firebase'
 import Input from 'components/Input'
 import Button from 'components/Button'
-import styles from 'components/SignIn.module.scss'
+import styles from 'components/SignUp.module.scss'
 
 class SignUp extends Component {
   state = {confirmPassword: '', displayName: '', email: '', password: ''}
