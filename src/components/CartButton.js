@@ -1,6 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
 import {connect} from 'react-redux'
+import {getQuantity} from 'store/selectors'
 import {toggleCartDropdown} from 'store/actions'
 import styles from 'components/CartButton.module.scss'
 
@@ -26,11 +27,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-function mapStateToProps({cart: {cartItems}}) {
+function mapStateToProps(state) {
   return {
-    quantity: cartItems.reduce((quantity, item) => {
-      return quantity + item.quantity
-    }, 0),
+    quantity: getQuantity(state),
   }
 }
 

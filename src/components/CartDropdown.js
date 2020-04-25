@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {getCartItems} from 'store/selectors'
 import {toggleCartDropdown} from 'store/actions'
 import Button from 'components/Button'
 import CartItem from 'components/CartItem'
@@ -27,10 +28,10 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-function mapStateToProps({cart}) {
+function mapStateToProps(state) {
   return {
-    cartItems: cart.cartItems,
-    isDropdownHidden: cart.isDropdownHidden,
+    cartItems: getCartItems(state),
+    isDropdownHidden: state.cart.isDropdownHidden,
   }
 }
 
