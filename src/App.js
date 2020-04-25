@@ -2,10 +2,12 @@ import React, {Component} from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {createStructuredSelector} from 'reselect'
-import {getCurrentUser} from 'store/userSelectors'
+import {CHECKOUT_PATHNAME} from 'config/constants'
 import {auth, createUserProfileDocument} from 'db/firebase'
+import {getCurrentUser} from 'store/userSelectors'
 import {setCurrentUser} from 'store/actions'
 import Auth from 'pages/Auth'
+import Checkout from 'pages/Checkout'
 import Header from 'components/Header'
 import Home from 'pages/Home'
 import NotFound from 'pages/NotFound'
@@ -52,6 +54,7 @@ class App extends Component {
             path='/signin'
             render={() => (currentUser ? <Redirect to='/' /> : <Auth />)}
           />
+          <Route component={Checkout} exact path={CHECKOUT_PATHNAME} />
           <Route component={Shop} exact path='/shop' />
           <Route component={NotFound} path='*' />
         </Switch>

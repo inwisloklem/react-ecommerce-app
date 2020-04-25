@@ -1,14 +1,10 @@
 @import "styles/variables.scss";
 
-.component {
-  list-style: none;
-
-  &:not(:last-of-type) {
-    margin-bottom: 24px;
-  }
+.header {
+  border-bottom: solid 2px $color-primary;
 }
 
-.list {
+.row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
@@ -19,7 +15,8 @@
 .title {
   margin-bottom: 16px;
   margin-left: 16px;
-  font-size: 32px;
+  font-size: 24px;
+  font-weight: 700;
   color: $color-primary;
   line-height: 1;
   text-transform: uppercase;

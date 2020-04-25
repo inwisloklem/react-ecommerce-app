@@ -1,12 +1,13 @@
 import React from 'react'
 import COLLECTIONS from 'db/collections'
-import Products from 'components/Products'
+import List from 'components/List'
+import ProductsItem from 'components/ProductsItem'
 import styles from 'pages/Shop.module.scss'
 
 function Shop() {
   return (
     <div className={styles.component}>
-      <Products items={COLLECTIONS} />
+      <List className={styles.list} component={ProductsItem} items={COLLECTIONS} />
     </div>
   )
 }

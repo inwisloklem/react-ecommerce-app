@@ -14,11 +14,8 @@
 }
 
 .list {
+  margin: 8px 0;
   @extend .vgap;
-
-  &:not(:empty) {
-    margin-top: 8px;
-  }
 }
 
 .vgap {

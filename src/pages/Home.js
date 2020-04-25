@@ -1,12 +1,13 @@
 import React from 'react'
 import BANNERS from 'db/banners'
-import Banners from 'components/Banners'
+import BannersItem from 'components/BannersItem'
+import List from 'components/List'
 import styles from 'pages/Home.module.scss'
 
 function Home() {
   return (
     <div className={styles.component}>
-      <Banners items={BANNERS} />
+      <List className={styles.list} component={BannersItem} items={BANNERS} />
     </div>
   )
 }
