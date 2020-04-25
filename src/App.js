@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {createStructuredSelector} from 'reselect'
+import {getCurrentUser} from 'store/userSelectors'
 import {auth, createUserProfileDocument} from 'db/firebase'
 import {setCurrentUser} from 'store/actions'
 import Auth from 'pages/Auth'
@@ -58,12 +60,6 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({user}) {
-  return {
-    currentUser: user.currentUser,
-  }
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     setCurrentUser(user) {
@@ -71,5 +67,9 @@ function mapDispatchToProps(dispatch) {
     },
   }
 }
+
+const mapStateToProps = createStructuredSelector({
+  currentUser: getCurrentUser,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

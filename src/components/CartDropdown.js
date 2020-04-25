@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getCartItems} from 'store/selectors'
+import {createStructuredSelector} from 'reselect'
+import {getCartItems, getIsDropdownHidden} from 'store/cartSelectors'
 import {toggleCartDropdown} from 'store/actions'
 import Button from 'components/Button'
 import CartItem from 'components/CartItem'
@@ -28,11 +29,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    cartItems: getCartItems(state),
-    isDropdownHidden: state.cart.isDropdownHidden,
-  }
-}
+const mapStateToProps = createStructuredSelector({
+  cartItems: getCartItems,
+  isDropdownHidden: getIsDropdownHidden,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartDropdown)

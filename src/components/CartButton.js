@@ -1,7 +1,8 @@
 import React from 'react'
 import cn from 'classnames'
 import {connect} from 'react-redux'
-import {getQuantity} from 'store/selectors'
+import {createStructuredSelector} from 'reselect'
+import {getQuantity} from 'store/cartSelectors'
 import {toggleCartDropdown} from 'store/actions'
 import styles from 'components/CartButton.module.scss'
 
@@ -27,10 +28,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    quantity: getQuantity(state),
-  }
-}
+const mapStateToProps = createStructuredSelector({
+  quantity: getQuantity,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartButton)

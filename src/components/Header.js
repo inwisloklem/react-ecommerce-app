@@ -1,7 +1,9 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {createStructuredSelector} from 'reselect'
 import {auth} from 'db/firebase'
+import {getCurrentUser} from 'store/userSelectors'
 import CartButton from 'components/CartButton'
 import CartDropdown from 'components/CartDropdown'
 import styles from 'components/Header.module.scss'
@@ -45,10 +47,8 @@ function Header({currentUser}) {
   )
 }
 
-function mapStateToProps({user}) {
-  return {
-    currentUser: user.currentUser,
-  }
-}
+const mapStateToProps = createStructuredSelector({
+  currentUser: getCurrentUser,
+})
 
 export default connect(mapStateToProps)(Header)
