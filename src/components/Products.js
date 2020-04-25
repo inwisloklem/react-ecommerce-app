@@ -1,12 +1,11 @@
 import React from 'react'
-import COLLECTIONS from 'db/collections'
 import ProductsItem from 'components/ProductsItem'
 import styles from 'components/Products.module.scss'
 
-function Products() {
+function Products({items}) {
   return (
     <ul className={styles.component}>
-      {COLLECTIONS.map(({id, title, items}) => (
+      {items.map(({id, title, items}) => (
         <ProductsItem items={items} key={id} title={title} />
       ))}
     </ul>

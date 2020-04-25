@@ -2,7 +2,7 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {auth} from 'db/firebase'
-import CartCount from 'components/CartCount'
+import CartButton from 'components/CartButton'
 import CartDropdown from 'components/CartDropdown'
 import styles from 'components/Header.module.scss'
 
@@ -36,7 +36,7 @@ function Header({currentUser}) {
           )}
         </li>
         <li className={styles.last}>
-          <CartCount />
+          <CartButton />
         </li>
       </ul>
 

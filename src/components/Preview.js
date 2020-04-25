@@ -7,8 +7,8 @@ const MAX_PREVIEW_ITEMS = 4
 function Preview({items}) {
   return (
     <ul className={styles.component}>
-      {items.filter((_, i) => i < MAX_PREVIEW_ITEMS).map(({id, name, price}) => (
-        <PreviewItem key={id} name={name} price={price} />
+      {items.filter((_, i) => i < MAX_PREVIEW_ITEMS).map(item => (
+        <PreviewItem key={item.id} {...item} />
       ))}
     </ul>
   )

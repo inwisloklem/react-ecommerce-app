@@ -2,12 +2,27 @@
 
 .component {
   position: absolute;
-  top: 40px;
-  right: 0;
+  top: 4px;
+  right: 8px;
   z-index: 5;
-  padding: 16px;
-  max-width: 288px;
+  padding: 8px;
+  max-width: 256px;
   width: 100%;
-  background: $color-primary-lighter;
+  background: #fff;
+  border: solid 4px $color-accent-light;
   outline: none;
+}
+
+.list {
+  @extend .vgap;
+
+  &:not(:empty) {
+    margin-top: 8px;
+  }
+}
+
+.vgap {
+  > *:not(:last-child) {
+    margin-bottom: 8px;
+  }
 }

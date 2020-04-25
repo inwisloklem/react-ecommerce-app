@@ -1,9 +1,13 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {addItemToCart} from 'store/actions'
 import styles from 'components/PreviewItem.module.scss'
 
-function PreviewItem({name, price}) {
+function PreviewItem({addItemToCart, ...item}) {
+  const {name, price} = item
+
   return (
-    <li className={styles.component}>
+    <li className={styles.component} onClick={() => addItemToCart(item)}>
       <h3 className={styles.title}>
         {name}
       </h3>
@@ -14,4 +18,12 @@ function PreviewItem({name, price}) {
   )
 }
 
-export default PreviewItem
+function mapDispatchToProps(dispatch) {
+  return {
+    addItemToCart(item) {
+      dispatch(addItemToCart(item))
+    },
+  }
+}
+
+export default connect(null, mapDispatchToProps)(PreviewItem)

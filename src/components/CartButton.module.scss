@@ -1,12 +1,16 @@
 @import "styles/variables.scss";
 
 .component {
+  border: none;
+  background: $color-accent;
+  height: 32px;
   font-size: 20px;
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
-  border: none;
-  background: $color-accent;
-  cursor: pointer;
   outline: none;
+}
+
+.pointer {
+  cursor: pointer;
 }

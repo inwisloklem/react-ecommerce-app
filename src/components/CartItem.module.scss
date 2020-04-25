@@ -1,0 +1,28 @@
+@import "styles/variables.scss";
+
+.component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  height: 80px;
+  background: $color-primary;
+  transition: 400ms ease;
+  transition-property: background;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background: $color-primary-light;
+  }
+}
+
+.title, .price {
+  font-weight: 700;
+  color: #fff;
+}
+
+.title {
+  font-size: 18px;
+}
