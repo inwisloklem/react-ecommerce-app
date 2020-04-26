@@ -1,0 +1,44 @@
+@import "styles/variables.scss";
+
+.component {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 16px;
+  list-style: none;
+
+  &:first-child {
+    margin-top: 16px;
+  }
+}
+
+.hgap {
+  > *:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.small {
+  max-width: 64px;
+}
+
+.value {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-primary;
+
+  &:first-child {
+    margin-left: 16px;
+    justify-content: flex-start;
+  }
+  &:nth-child(3) {
+    justify-content: center;
+  }
+  &:last-child {
+    margin-right: 16px;
+  }
+}

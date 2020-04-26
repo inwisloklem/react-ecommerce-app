@@ -3,11 +3,11 @@ import cn from 'classnames'
 import {Link} from 'react-router-dom'
 import styles from 'components/Button.module.scss'
 
-function Button({children, hasAccent, linkTo, type = 'button', ...props}) {
+function Button({className, children, hasAccent, linkTo, type = 'button', ...props}) {
   if (linkTo) {
     return (
       <Link
-        className={cn(styles.component, hasAccent ? styles.accent : styles.basic)}
+        className={cn(styles.component, hasAccent ? styles.accent : styles.basic, className)}
         to={linkTo}
         {...props}
       >
@@ -18,7 +18,7 @@ function Button({children, hasAccent, linkTo, type = 'button', ...props}) {
 
   return (
     <button
-      className={cn(styles.component, hasAccent ? styles.accent : styles.basic)}
+      className={cn(styles.component, hasAccent ? styles.accent : styles.basic, className)}
       type={type}
       {...props}
     >

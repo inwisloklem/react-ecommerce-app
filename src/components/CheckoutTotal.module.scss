@@ -1,0 +1,17 @@
+@import "styles/variables.scss";
+
+.component {
+  margin-top: 16px;
+  border-top: solid 2px $color-primary;
+}
+
+.total {
+  margin-top: 16px;
+  margin-right: 16px;
+  font-size: 32px;
+  font-weight: 700;
+  color: $color-primary;
+  line-height: 1;
+  text-align: right;
+  text-transform: uppercase;
+}

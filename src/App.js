@@ -5,6 +5,7 @@ import {createStructuredSelector} from 'reselect'
 import {CHECKOUT_PATHNAME} from 'config/constants'
 import {auth, createUserProfileDocument} from 'db/firebase'
 import {getCurrentUser} from 'store/userSelectors'
+import {getQuantity} from 'store/cartSelectors'
 import {setCurrentUser} from 'store/actions'
 import Auth from 'pages/Auth'
 import Checkout from 'pages/Checkout'
@@ -20,11 +21,11 @@ class App extends Component {
   componentDidMount() {
     const {setCurrentUser} = this.props
 
-    this.unsubscribeFromAuthStateChanged = auth.onAuthStateChanged(async (user) => {
+    this.unsubscribeFromAuthStateChanged = auth.onAuthStateChanged(async user => {
       if (user) {
         const userRef = await createUserProfileDocument(user)
 
-        userRef.onSnapshot((snapshot) => {
+        userRef.onSnapshot(snapshot => {
           setCurrentUser({
             id: snapshot.id,
             ...snapshot.data(),
@@ -42,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-    const {currentUser} = this.props
+    const {currentUser, quantity} = this.props
 
     return (
       <div className={styles.app}>
@@ -54,7 +55,11 @@ class App extends Component {
             path='/signin'
             render={() => (currentUser ? <Redirect to='/' /> : <Auth />)}
           />
-          <Route component={Checkout} exact path={CHECKOUT_PATHNAME} />
+          <Route
+            exact
+            path={CHECKOUT_PATHNAME}
+            render={() => (quantity > 0 ? <Checkout /> : <Redirect to='/' />)}
+          />
           <Route component={Shop} exact path='/shop' />
           <Route component={NotFound} path='*' />
         </Switch>
@@ -73,6 +78,7 @@ function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: getCurrentUser,
+  quantity: getQuantity,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

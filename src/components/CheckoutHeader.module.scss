@@ -14,10 +14,21 @@
 
 .title {
   margin-bottom: 16px;
-  margin-left: 16px;
   font-size: 24px;
   font-weight: 700;
   color: $color-primary;
   line-height: 1;
+  text-align: right;
   text-transform: uppercase;
+
+  &:first-child {
+    margin-left: 16px;
+    text-align: left;
+  }
+  &:nth-child(3) {
+    text-align: center;
+  }
+  &:last-child {
+    margin-right: 16px;
+  }
 }
