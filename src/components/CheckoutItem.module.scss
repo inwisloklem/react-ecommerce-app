@@ -23,6 +23,13 @@
   max-width: 64px;
 }
 
+.quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+}
+
 .value {
   display: flex;
   justify-content: flex-end;

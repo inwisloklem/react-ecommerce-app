@@ -1,12 +1,12 @@
 import React from 'react'
 import cn from 'classnames'
 import {connect} from 'react-redux'
-import {addItemToCart, removeItemFromCart} from 'store/actions'
+import {addItemToCart, clearItemFromCart, removeItemFromCart} from 'store/actions'
 import Button from 'components/Button'
 import styles from 'components/CheckoutItem.module.scss'
 
-function CheckoutItem({addItemToCart, removeItemFromCart, ...item}) {
-  const {name, price, quantity} = item
+function CheckoutItem({addItemToCart, clearItemFromCart, removeItemFromCart, ...item}) {
+  const {id, name, price, quantity} = item
 
   return (
     <ul className={styles.component}>
@@ -16,13 +16,13 @@ function CheckoutItem({addItemToCart, removeItemFromCart, ...item}) {
         <Button className={styles.small} hasAccent onClick={() => removeItemFromCart(item)}>
           -
         </Button>
-        <span>{quantity}</span>
+        <div className={styles.quantity}>{quantity}</div>
         <Button className={styles.small} hasAccent onClick={() => addItemToCart(item)}>
           +
         </Button>
       </li>
       <li className={styles.value}>
-        <Button className={styles.small} hasAccent>
+        <Button className={styles.small} hasAccent onClick={() => clearItemFromCart(id)}>
           X
         </Button>
       </li>
@@ -34,6 +34,9 @@ function mapDispatchToProps(dispatch) {
   return {
     addItemToCart(item) {
       dispatch(addItemToCart(item))
+    },
+    clearItemFromCart(id) {
+      dispatch(clearItemFromCart(id))
     },
     removeItemFromCart(item) {
       dispatch(removeItemFromCart(item))

@@ -1,5 +1,6 @@
 import {
   ADD_ITEM_TO_CART,
+  CLEAR_ITEM_FROM_CART,
   REMOVE_ITEM_FROM_CART,
   SET_CURRENT_USER,
   TOGGLE_CART_DROPDOWN,
@@ -9,6 +10,13 @@ export function addItemToCart(item) {
   return {
     type: ADD_ITEM_TO_CART,
     payload: item,
+  }
+}
+
+export function clearItemFromCart(id) {
+  return {
+    type: CLEAR_ITEM_FROM_CART,
+    payload: id,
   }
 }
 

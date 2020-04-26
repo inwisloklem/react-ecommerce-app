@@ -1,4 +1,9 @@
-import {ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART, TOGGLE_CART_DROPDOWN} from 'store/types'
+import {
+  ADD_ITEM_TO_CART,
+  CLEAR_ITEM_FROM_CART,
+  REMOVE_ITEM_FROM_CART,
+  TOGGLE_CART_DROPDOWN,
+} from 'store/types'
 
 const INITIAL_STATE = {
   cartItems: [],
@@ -6,9 +11,10 @@ const INITIAL_STATE = {
 }
 
 function cartReducer(state = INITIAL_STATE, {type, payload}) {
+  const {cartItems, isDropdownHidden} = state
+
   switch (type) {
     case ADD_ITEM_TO_CART: {
-      const {cartItems} = state
       const index = cartItems.findIndex(item => item.id === payload.id)
 
       if (index > -1) {
@@ -26,8 +32,13 @@ function cartReducer(state = INITIAL_STATE, {type, payload}) {
         cartItems: [...cartItems, {...payload, quantity: 1}],
       }
     }
+    case CLEAR_ITEM_FROM_CART: {
+      return {
+        ...state,
+        cartItems: cartItems.filter(item => item.id !== payload),
+      }
+    }
     case REMOVE_ITEM_FROM_CART: {
-      const {cartItems} = state
       const index = cartItems.findIndex(item => item.id === payload.id)
 
       if (index > -1) {
@@ -52,7 +63,7 @@ function cartReducer(state = INITIAL_STATE, {type, payload}) {
     case TOGGLE_CART_DROPDOWN:
       return {
         ...state,
-        isDropdownHidden: !state.isDropdownHidden,
+        isDropdownHidden: !isDropdownHidden,
       }
     default:
       return state
