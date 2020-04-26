@@ -5,7 +5,7 @@ import {addItemToCart, clearItemFromCart, removeItemFromCart} from 'store/action
 import Button from 'components/Button'
 import styles from 'components/CheckoutItem.module.scss'
 
-function CheckoutItem({addItemToCart, clearItemFromCart, removeItemFromCart, ...item}) {
+function CheckoutItem({addItemToCart, cartItems, clearItemFromCart, removeItemFromCart, ...item}) {
   const {id, name, price, quantity} = item
 
   return (
@@ -13,7 +13,15 @@ function CheckoutItem({addItemToCart, clearItemFromCart, removeItemFromCart, ...
       <li className={styles.value}>{name}</li>
       <li className={styles.value}>{price}</li>
       <li className={cn(styles.value, styles.hgap)}>
-        <Button className={styles.small} hasAccent onClick={() => removeItemFromCart(item)}>
+        <Button
+          className={styles.small}
+          hasAccent
+          onClick={() => {
+            if (quantity > 1) {
+              removeItemFromCart(item)
+            }
+          }}
+        >
           -
         </Button>
         <div className={styles.quantity}>{quantity}</div>
