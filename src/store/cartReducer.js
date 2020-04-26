@@ -1,4 +1,4 @@
-import {ADD_ITEM_TO_CART, TOGGLE_CART_DROPDOWN} from 'store/types'
+import {ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART, TOGGLE_CART_DROPDOWN} from 'store/types'
 
 const INITIAL_STATE = {
   cartItems: [],
@@ -8,10 +8,11 @@ const INITIAL_STATE = {
 function cartReducer(state = INITIAL_STATE, {type, payload}) {
   switch (type) {
     case ADD_ITEM_TO_CART: {
-      const index = state.cartItems.findIndex(item => item.id === payload.id)
+      const {cartItems} = state
+      const index = cartItems.findIndex(item => item.id === payload.id)
 
       if (index > -1) {
-        const updatedCartItems = [...state.cartItems]
+        const updatedCartItems = [...cartItems]
         updatedCartItems[index].quantity += 1
 
         return {
@@ -22,8 +23,31 @@ function cartReducer(state = INITIAL_STATE, {type, payload}) {
 
       return {
         ...state,
-        cartItems: [...state.cartItems, {...payload, quantity: 1}],
+        cartItems: [...cartItems, {...payload, quantity: 1}],
       }
+    }
+    case REMOVE_ITEM_FROM_CART: {
+      const {cartItems} = state
+      const index = cartItems.findIndex(item => item.id === payload.id)
+
+      if (index > -1) {
+        const {quantity} = cartItems[index]
+        const updatedCartItems = [...cartItems]
+
+        if (quantity > 1) {
+          updatedCartItems[index].quantity -= 1
+        }
+        else {
+          updatedCartItems.splice(index, 1)
+        }
+
+        return {
+          ...state,
+          cartItems: updatedCartItems,
+        }
+      }
+
+      return state
     }
     case TOGGLE_CART_DROPDOWN:
       return {
