@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {createStructuredSelector} from 'reselect'
 import {withRouter} from 'react-router-dom'
 import {CHECKOUT_PATHNAME} from 'config/constants'
-import {getCartItems, getIsDropdownHidden} from 'store/cartSelectors'
+import {getCartItems, getIsDropdownHidden, getQuantity} from 'store/cartSelectors'
 import {removeItemFromCart, toggleCartDropdown} from 'store/actions'
 import Button from 'components/Button'
 import CartItem from 'components/CartItem'
@@ -16,6 +16,7 @@ function CartDropdown({
   isDropdownHidden,
   removeItemFromCart,
   toggleCartDropdown,
+  quantity,
 }) {
   const handleGoToCheckout = () => {
     toggleCartDropdown()
@@ -37,7 +38,7 @@ function CartDropdown({
         component={CartItem}
         items={cartItems}
         onClick={item => {
-          if (!isDropdownHidden && cartItems.length === 1) {
+          if (!isDropdownHidden && quantity === 1) {
             toggleCartDropdown()
           }
           removeItemFromCart(item)
@@ -65,6 +66,7 @@ function mapDispatchToProps(dispatch) {
 const mapStateToProps = createStructuredSelector({
   cartItems: getCartItems,
   isDropdownHidden: getIsDropdownHidden,
+  quantity: getQuantity,
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CartDropdown))
