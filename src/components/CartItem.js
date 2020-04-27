@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from 'components/CartItem.module.scss'
 
-function CartItem({name, price, quantity}) {
+function CartItem({name, price, quantity, onClick}) {
   return (
-    <li className={styles.component}>
+    <li className={styles.component} onClick={onClick}>
       <span className={styles.price}>
         {price}x{quantity}
       </span>

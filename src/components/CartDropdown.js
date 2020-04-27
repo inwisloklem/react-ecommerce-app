@@ -2,14 +2,21 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {createStructuredSelector} from 'reselect'
 import {withRouter} from 'react-router-dom'
-import {getCartItems, getIsDropdownHidden} from 'store/cartSelectors'
-import {toggleCartDropdown} from 'store/actions'
 import {CHECKOUT_PATHNAME} from 'config/constants'
+import {getCartItems, getIsDropdownHidden} from 'store/cartSelectors'
+import {removeItemFromCart, toggleCartDropdown} from 'store/actions'
 import Button from 'components/Button'
 import CartItem from 'components/CartItem'
+import List from 'components/List'
 import styles from 'components/CartDropdown.module.scss'
 
-function CartDropdown({cartItems, history, isDropdownHidden, toggleCartDropdown}) {
+function CartDropdown({
+  cartItems,
+  history,
+  isDropdownHidden,
+  removeItemFromCart,
+  toggleCartDropdown,
+}) {
   const handleGoToCheckout = () => {
     toggleCartDropdown()
 
@@ -25,11 +32,17 @@ function CartDropdown({cartItems, history, isDropdownHidden, toggleCartDropdown}
         X
       </Button>
 
-      <ul className={styles.list}>
-        {cartItems.map(item => (
-          <CartItem key={item.id} {...item} />
-        ))}
-      </ul>
+      <List
+        className={styles.list}
+        component={CartItem}
+        items={cartItems}
+        onClick={item => {
+          if (!isDropdownHidden && cartItems.length === 1) {
+            toggleCartDropdown()
+          }
+          removeItemFromCart(item)
+        }}
+      />
 
       <Button hasAccent onClick={handleGoToCheckout}>
         Go to checkout
@@ -40,6 +53,9 @@ function CartDropdown({cartItems, history, isDropdownHidden, toggleCartDropdown}
 
 function mapDispatchToProps(dispatch) {
   return {
+    removeItemFromCart(item) {
+      dispatch(removeItemFromCart(item))
+    },
     toggleCartDropdown() {
       dispatch(toggleCartDropdown())
     },
